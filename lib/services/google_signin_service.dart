@@ -13,7 +13,9 @@ class GoogleSigninService {
   static Future<GoogleSignInAccount?> signinWithGoogle() async {
     try {
       final account = await googleSignIn.signIn();
+      final gooleKey = await account?.authentication;
       log(account.toString());
+      log('Token ID: ${gooleKey?.idToken}');
       return account;
     } catch (e) {
       log('Error: $e');
